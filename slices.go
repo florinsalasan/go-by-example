@@ -11,6 +11,9 @@ import (
 func main() {
 
     var s []string
+    // note how you don't need to pass in a length when declaring a slice,
+    // unlike arrays, this might actually be the one difference in declaring
+    // a slice vs an array
     fmt.Println("uninit:", s, s == nil, len(s) == 0)
     // slices are typed by the elements that they contain thus an uninitialized
     // slice will be equal to nil, and have a len of 0.
@@ -50,5 +53,35 @@ func main() {
     // just like python can leave one of the parameters empty to get from start
     // second index - 1, or from index to end as a[:4] or a[2:] can even have
     // a[:] if wanted, but don't think that is useful tbh.
+    l := s[2:5]
+    fmt.Println("sl1:", l)
+
+    l = s[:5]
+    fmt.Println("sl2:", l)
+
+    l = s[2:]
+    fmt.Println("sl3:", l)
+
+    // can declare and initialize all in one line just like arrays.
+    t := []string{"g", "h", "i"}
+    fmt.Println("dcl:", t)
+    fmt.Printf("t is of type %T\n", t)
+
+    t2 := []string{"g", "h", "i"}
+    if slices.Equal(t, t2) {
+        fmt.Println("t == t2")
+    }
+
+    twoD := make([][]int, 3)
+    for i := 0; i < 3; i++ {
+        innerLen := i + 1
+        twoD[i] = make([]int, innerLen)
+        for j := 0; j < innerLen; j++ {
+            twoD[i][j] = i + j
+        }
+    }
+    fmt.Println("2d:", twoD)
+    // While slices are not the same as arrays, when printed out they are 
+    // rendered in a similar fashion.
 }
 

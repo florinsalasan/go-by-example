@@ -20,6 +20,7 @@ func main() {
 
     b := [5]int{1, 2, 3, 4, 5}
     // use the above to declare and initialize the array with specific values
+    // unlike python, values are initialized within {} 
     fmt.Println("dcl:", b)
 
     var twoD [2][3]int
